@@ -4,7 +4,9 @@ Use HTTP proxy to serve REST api, statics
 version: '3.3'
 services:
   http-proxy:
-    image: shenron/http-proxy
+    # ./http-proxy/Dockerfile
+    # FROM shenron/http-proxy
+    context: ./http-proxy/
     build:
       args:
         domain_name: "localhost"

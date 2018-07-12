@@ -4,7 +4,9 @@ Use HTTPS proxy to serve REST api, statics
 version: '3.3'
 services:
   https-proxy:
-    image: shenron/https-proxy
+    # ./https-proxy/Dockerfile
+    # FROM shenron/https-proxy
+    context: ./https-proxy/
     build:
       args:
         domain_name: "real-domain-name.com"
