@@ -10,8 +10,8 @@ services:
       context: ./https-proxy/
       args:
         domain_name: "real-domain-name.com"
-        service_name: "other-service"
-        service_internal_port: "8181"
+        api_service: "api:3000"
+        static_service: "static:80"
         email: "mail@real-domain-name.com"
         dhparam: "2048"
     ports:
@@ -21,7 +21,8 @@ services:
       - letsencrypt-data:/etc/letsencrypt/archive/
       - nginx-ssl-data:/etc/nginx/ssl/
     depends_on:
-      - other-service
+      - api
+      - static
 
 volumes:
   letsencrypt-data:

@@ -10,10 +10,11 @@ services:
       context: ./http-proxy/
       args:
         domain_name: "localhost"
-        service_name: "other-service"
-        service_internal_port: "8181"
+        api_service: "api:3000"
+        static_service: "static:80"
     ports:
       - "8080:80"
     depends_on:
-      - other-service
+      - api
+      - static
 ```
