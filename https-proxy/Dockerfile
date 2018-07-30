@@ -20,7 +20,7 @@ ONBUILD RUN sed -i "s/server_name \$domain_name;/server_name $domain_name;/" /et
   sed -i "s/proxy_pass http:\/\/\$api_service;/proxy_pass http:\/\/$api_service;/" /default-https.conf &&\
   sed -i "s/proxy_pass http:\/\/\$static_service;/proxy_pass http:\/\/$static_service;/" /default-https.conf
 
-ONBUILD RUN mkdir /etc/nginx/ssl &&\
+ONBUILD RUN mkdir -p /etc/nginx/ssl/$domain_name &&\
   mkdir -p /var/www/default && \
   cp /usr/share/nginx/html/* /var/www/default/
 

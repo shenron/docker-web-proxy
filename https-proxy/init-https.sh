@@ -10,9 +10,9 @@ if [ ! -d "/etc/letsencrypt/archive/$domain_name" ]; then
 fi
 
 # if first launch, start creation of dhparam
-if [ ! -f "/etc/nginx/ssl/dhparam$dhparam.pem" ]; then
+if [ ! -f "/etc/nginx/ssl/$domain_name/dhparam$dhparam.pem" ]; then
   echo "Creation of dhparam.pem"
-  cd /etc/nginx/ssl/ && openssl dhparam -out dhparam$dhparam.pem $dhparam
+  cd /etc/nginx/ssl/$domain_name/ && openssl dhparam -out dhparam$dhparam.pem $dhparam
 fi
 
 echo "Force to use https"
