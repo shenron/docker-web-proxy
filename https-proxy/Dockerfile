@@ -3,8 +3,8 @@ FROM nginx:stable-alpine
 MAINTAINER Thomas CASTELLY <thomas@tcy.io>
 
 ONBUILD ARG domain_name
-ONBUILD ARG service_name
-ONBUILD ARG service_internal_port
+ONBUILD ARG api_service
+ONBUILD ARG static_service
 ONBUILD ARG email
 ONBUILD ARG dhparam
 
@@ -17,7 +17,8 @@ ONBUILD RUN sed -i "s/server_name \$domain_name;/server_name $domain_name;/" /et
   sed -i "s/\$domain_name/$domain_name/" /default-https.conf && \
   sed -i "s/www.\$domain_name/www.$domain_name/" /default-https.conf &&\
   sed -i "s/\$dhparam/$dhparam/" /default-https.conf &&\
-  sed -i "s/proxy_pass http:\/\/\$service_name:\$service_internal_port;/proxy_pass http:\/\/$service_name:$service_internal_port;/" /default-https.conf
+  sed -i "s/proxy_pass http:\/\/\$api_service;/proxy_pass http:\/\/$api_service;/" /default-https.conf &&\
+  sed -i "s/proxy_pass http:\/\/\$static_service;/proxy_pass http:\/\/$static_service;/" /default-https.conf
 
 ONBUILD RUN mkdir /etc/nginx/ssl &&\
   mkdir -p /var/www/default && \
