@@ -3,6 +3,8 @@ FROM nginx:stable-alpine
 MAINTAINER Thomas CASTELLY <thomas@tcy.io>
 
 ARG domain_name
+ARG service_name
+ARG service_internal_port
 
 COPY /nginx/conf.d/default.conf /etc/nginx/conf.d/
 COPY /nginx/conf.d/default-http.conf /
