@@ -4,12 +4,14 @@ Use HTTPS proxy to serve REST api, statics
 version: '3.3'
 services:
   https-proxy:
-    # ./https-proxy/Dockerfile
-    # FROM shenron/https-proxy
-    context: ./https-proxy/
     build:
+      # ./https-proxy/Dockerfile
+      # FROM shenron/https-proxy
+      context: ./https-proxy/
       args:
         domain_name: "real-domain-name.com"
+        service_name: "other-service"
+        service_internal_port: "8181"
         email: "mail@real-domain-name.com"
         dhparam: "2048"
     ports:
