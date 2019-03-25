@@ -1,4 +1,4 @@
-FROM nginx:stable-alpine
+FROM nginx:1.12.2-alpine
 
 MAINTAINER Thomas CASTELLY <thomas@tcy.io>
 
